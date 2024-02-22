@@ -6,14 +6,11 @@ import servlets.ImageServlet.ImageServlet;
 class Main {
 
     public static void main(String[] args) {
-
        def jettyServer = new Server(9090);
        def context = new Context(jettyServer, '/', Context.SESSIONS);
        context.resourceBase = '.';
        context.addServlet(ImageServlet, '/image')
        jettyServer.start();
-       
-
     }
 
 }

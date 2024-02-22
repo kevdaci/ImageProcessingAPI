@@ -14,9 +14,8 @@ class ResponseHandler {
 	}
 
 	public static void printJsonResponse(HttpServletResponse httpServletResponse, response) {
-		def jsonResponse = toJsonResponse(response);
-		println(jsonResponse);
 		setContentTypeToApplicationJson(httpServletResponse);
+		def jsonResponse = toJsonResponse(response);
 		PrintWriter out = httpServletResponse.getWriter();
 		out.println(jsonResponse);
 	}
