@@ -6,12 +6,21 @@ import groovy.json.JsonOutput;
 import groovy.json.JsonSlurper;
 import utils.*;
 import models.requests.*;
+import models.responses.*;
+import services.ImageResizeService;
 
 class ImageServlet extends HttpServlet {
 
-    void doPost(HttpServletRequest request, HttpServletResponse response) {
-        Request imageResizeRequest = RequestHandler.getImageResizeRequest(request);
-        ResponseHandler.printJsonResponse(response, imageResizeRequest);
+    private ImageResizeService imageResizeService;
+
+    void init() {
+        this.imageResizeService = ImageResizeService.getInstance(); 
+    }
+
+    void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+        Request request = RequestHandler.getImageResizeRequest(httpServletRequest);
+        Response imageResizeResponse = this.imageResizeService.processRequest(request);
+        ResponseHandler.printJsonResponse(httpServletResponse, imageResizeResponse);
     }
 
 }
