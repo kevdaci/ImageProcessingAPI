@@ -7,7 +7,7 @@ import models.requests.*;
 
 class RequestHandler {
 
-	public static def getRequestBody(HttpServletRequest httpServletRequest) {
+	static def getRequestBody(HttpServletRequest httpServletRequest) {
 		StringBuilder sb = new StringBuilder();
 		def requestString = httpServletRequest.getReader().lines();
 		requestString.each( { sb.append(it) } );
@@ -16,7 +16,7 @@ class RequestHandler {
 		return json;
 	}
 
-	public static Request getImageResizeRequest(HttpServletRequest httpServletRequest) {
+	static Request getImageResizeRequest(HttpServletRequest httpServletRequest) {
 		def requestBody = getRequestBody(httpServletRequest);
 		Request imageResizeRequest = ImageResizeRequest.createRequest(requestBody);
 		return imageResizeRequest;

@@ -10,13 +10,13 @@ class ImageResizeRequest extends Request {
 		this.dimensions = dimensions;
 	}
 
-	public static Request createRequest(String imageDataBase64, Dimensions dimensions) {
+	static Request createRequest(String imageDataBase64, Dimensions dimensions) {
 		ImageResizeRequest imageResizeRequest = new ImageResizeRequest(dimensions);
 		imageResizeRequest.setImageDataBase64(imageDataBase64);
 		return imageResizeRequest;
 	}
 
-	public static Request createRequest(jsonRequest) {
+	static Request createRequest(jsonRequest) {
 		def jsonRequestDimensions = jsonRequest["dimensions"];
 		Dimensions dimensions = new Dimensions(width: jsonRequestDimensions["width"], height: jsonRequestDimensions["height"]);
 		return createRequest(jsonRequest["imageDataBase64"], dimensions);
