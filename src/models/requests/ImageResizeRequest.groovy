@@ -21,5 +21,13 @@ class ImageResizeRequest extends Request {
 		Dimensions dimensions = new Dimensions(width: jsonRequestDimensions["width"], height: jsonRequestDimensions["height"]);
 		return createRequest(jsonRequest["imageDataBase64"], dimensions);
 	}
+
+	Dimensions getDimensions() {
+		return this.dimensions;
+	}
+
+	void setDimensions(Dimensions dimensions) {
+		this.dimensions = dimensions;
+	}
 	
 }
