@@ -13,9 +13,7 @@ class ImageResizeService extends Service {
 
 	private static ImageResizeService imageResizeService = new ImageResizeService();
 
-	private ImageResizeService() {
-
-	}
+	private ImageResizeService() {}
 
 	static ImageResizeService getInstance() {
 		return this.imageResizeService;
